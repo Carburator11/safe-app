@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Safe App</title>
-<link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Leckerli One">
-<link rel="stylesheet" type="text/css"  href="style.css">
-<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js">
-    var input = 'const getMessage = () => "Hello World";';
-    var output = Babel.transform(input, { presets: ['es2015'] }).code;
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Safe App</title>
+  <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Leckerli One">
+  <link rel="stylesheet" type="text/css"  href="style.css">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js">  </script>
+</head>
 
 <script type="text/babel">
 
@@ -20,38 +20,91 @@
 const user1 = {
   name: 'Pierre',
   age: 33,
-  pet: {
-    name: "Lily",
-    img: "spider.jpg"}
+  img: "spider.jpg"
+};
+
+const user2 = {
+  name: 'Brendan Eich',
+  age: 57,
+  img: "js.jpg"
 };
 
 
-function Greet(user){
-  {/*This is a JSX Comment*/}
+function Head(){
+  return(<div className = "head">
+    <h1>Safe app v0.1</h1>
+    <Clock />
+    </div>)
+  }
+
+
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() }; }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (<span>  { this.state.date.toLocaleString() }  </span>);
+    }
+  }
+
+const currentStatus = {no: "Pas d'incident en cours"}
+
+function Status(prop){
+  return(<div className="status" >
+    <h2>Status</h2>
+    <p>{prop.no}</p>
+    </div>)
+}
+
+function Userlist(){
+  return(<div className="userList">
+    <h2>Users</h2>
+    <Avatar name = {user1.name}  age =  "33"  img =  {user1.img}/>  {/*  user1.age */}
+    <Avatar name = {user2.name}  age =  {user2.age}  img =  {user2.img}/>
+    </div>)
+  }
+
+function Avatar(prop){
     return (
-        <div>
-          <h1>Hello, {user.name}!</h1>
-          <p>You are {user.age} years old</p>
-          <p>Your favorite pet is {user.pet.name}, and she looks beautiful</p>
-          <img src ={user.pet.img} title ={user.pet.name}/>
-          <h2>Today is {new Date().toLocaleTimeString()}.</h2>
-
-
+        <div className="avatar">
+          <p>Name :{prop.name}</p>
+          <p>Age : {prop.age}</p>
+          <img src = {prop.img} title = {prop.name} />
         </div>
         );
 }
 
 
-function renderGreet(){
   ReactDOM.render(
-            <Greet
-              name = {user1.name}
-              age = {user1.age}
-              pet = {user1.pet}/>,  document.getElementById('root'))
-}
+            (<div>
+              <Head />
+              <div className = "main">
+              <Status className = "status" no = {currentStatus.no}/>
+              <Userlist className ="userList"/>
+            </div></div>),  document.getElementById('root'))
 
 
-setInterval(renderGreet, 1000);
+
+
 
 </script>
 
