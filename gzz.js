@@ -1,3 +1,10 @@
+//<p>You are {props.age} years old</p>
+//<p>Your favorite pet is {props.pet.name}, and she looks beautiful</p>
+//<img src ={props.pet.img} title ={props.pet.name}/>
+//<h2>Today is {new Date().toLocaleTimeString()}.</h2>
+
+
+
 var Title = React.createClass({
   stuff: ["ducklings", "hairy spiders", "Javascripts"],
 

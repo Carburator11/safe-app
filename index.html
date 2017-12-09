@@ -14,35 +14,52 @@
 
 <script type="text/babel">
 
-function name(user) {
-  if(user.age > 20)
-      return "old " + user.name ;
-}
 
-const user = {
+
+// note : JSX escapes any malicious code
+const user1 = {
   name: 'Pierre',
-  age: 33
+  age: 33,
+  pet: {
+    name: "Lily",
+    img: "spider.jpg"}
 };
 
-const element = (
-<h1>
-  Hello, {name(user)}!
-</h1>
-);
+
+function Greet(user){
+  {/*This is a JSX Comment*/}
+    return (
+        <div>
+          <h1>Hello, {user.name}!</h1>
+          <p>You are {user.age} years old</p>
+          <p>Your favorite pet is {user.pet.name}, and she looks beautiful</p>
+          <img src ={user.pet.img} title ={user.pet.name}/>
+          <h2>Today is {new Date().toLocaleTimeString()}.</h2>
 
 
+        </div>
+        );
+}
 
+
+function renderGreet(){
   ReactDOM.render(
-      element,
-      document.getElementById('output')
-);
+            <Greet
+              name = {user1.name}
+              age = {user1.age}
+              pet = {user1.pet}/>,  document.getElementById('root'))
+}
+
+
+setInterval(renderGreet, 1000);
+
 </script>
 
 
 
 
 <body>
-  <div id="output"> </div>
+  <div id="root"> </div>
 </body>
 
 
