@@ -1,0 +1,11 @@
+# Untracked files:
+
+
+
+# ignore objects and archives :
+
+
+
+
+
+#To stop tracking a file that is currently tracked, use git rm --cached.
