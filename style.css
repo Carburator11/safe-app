@@ -1,0 +1,102 @@
+*{padding: 0 ; margin: 0;  }
+
+#title{
+}
+
+
+#pic{
+  display: inline-block;
+  position: relative;
+  width: 130px;
+  height: 130px;
+
+}
+
+fieldset {
+  border-radius: 5px;
+  background: inherit;}
+
+legend { color: #0080a8;
+        background: inherit;}
+
+.banner { height: 140px;
+          width:  100%;
+          margin: 0 0 25px 0;
+          background: MediumPurple  ;
+          }
+.banner h1 {
+          font-size: 36px;
+          background: inherit;
+
+          }
+
+          .banner h2 {
+                    font-size: 30px;
+                    background: inherit;
+
+                    }
+
+
+.boxPic { width: 15%;
+          height: 130px;
+          display: inline-block;
+          background: white;
+
+          margin: 4px auto auto auto ;
+          min-width: 130px;
+          background-color: inherit;
+          text-align: center;
+
+        }
+.boxTitle{
+          width: 75%;
+          height: 130px;
+          display: inline-block;
+
+          margin: 4px auto auto auto;
+          vertical-align:top;
+          font-family:  'Leckerli One',serif;
+          color: white;
+          text-align: center;
+
+
+}
+
+.boxRight{
+          width: 20%;
+          height: 130px;
+          display: inline-block;
+          border: 1px solid white;
+          margin: 4px auto auto auto;
+          vertical-align:top;
+          background: inherit;
+          display: none;
+
+
+
+}
+
+.widget{
+
+  width: 45%;
+  margin: auto;
+  padding: 15px;
+
+}
+
+
+
+@media only screen and (max-device-width : 600px){
+    .banner h1 { font-size: 28px;}
+    .banner h2  { font-size: 20px;}
+    #pic{  width: 80px;  height: 80px;      }
+    .boxPic{  width: 80px;  height: 80px;  min-width: 120px;}
+}
+
+
+@media only screen and (max-device-width : 400px){
+.banner h1 { font-size: 26px;}
+.banner h2  { font-size: 12px;}
+#pic{  width: 80px;  height: 80px;      }
+.boxPic{  width: 80px;  height: 80px;  min-width: 120px;}
+}

@@ -2,203 +2,48 @@
 <html>
 
 <head>
-
-
-
-  <title>My React App!</title>
-  <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Leckerli One">
-  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js"></script>
-  <script src = "stylePierre.js"></script>
-  <script type="text/babel">
-
-
-
-
-var Title = React.createClass({
-              stuff: ["ducklings", "hairy spiders", "Javascripts"],
-
-              getInitialState: function() {return {titleNum: 0 }; },
-
-              titleChange: function(y){
-                this.setState({titleNum: y});
-              },
-
-                render: function(){
-                        return (<div style = {titlePanel}>
-                                <h1>just a  React App</h1>
-                                <h2 > with mermaids, kittens and <span style = {styleAkira} > {this.stuff[this.state.titleNum]}</span> !</h2>
-                                </div>);
-              }
-});
-
-
-
-
-var Pic = React.createClass({
-
-    srcArray: ["duck.jpg", "spider.jpg", "js.jpg"],
-    getInitialState: function() {return {picNum: 0} ; },
-
-    click: function(){
-          var current = this.state.picNum ;
-          var next = ++current % (this.srcArray.length) ;
-          this.setState({picNum: next});
-      },
-
-    handleChange: function(event){
-            this.setState({picNum: event.target.value});
-    },
-
-
-
-    render: function(){
-        return (
-
-                  <div>
-                  <img src = {this.srcArray[this.state.picNum]} contain style= {pic} />
-                  <button onClick = {this.click}>Change me</button>
-
-
-                  </div>);
-  }});
-
-
-var Form = React.createClass({
-
-    getInitialState: function() {return {checked: '0'} ; },
-
-    handleChange: function(event){
-            this.setState({checked: event.target.value});
-            Pic.setState({picNum: parseInt(event.target.value)});
-            Title.setState({titleNum: parseInt(event.target.value)});
-    },
-
-    render: function(){
-      return( <div > Hello my name is {this.props.name}
-                  <fieldset>
-                      <legend><h2>Preference</h2></legend>
-                          <form>  What do you prefer most ?<br/>
-                                <input type="radio" name="choice" value= "0" onChange={this.handleChange} checked= {this.state.checked === '0'} /> ducks    <br/>
-                                <input type="radio" name="choice" value= "1" onChange={this.handleChange} checked= {this.state.checked === '1'} /> spiders  <br/>
-                                <input type="radio" name="choice" value= "2" onChange={this.handleChange} checked= {this.state.checked === '2'} /> javascript
-                        </form>
-                  </fieldset>
-
-              </div>  );
-
-}});
-
-
-
-ReactDOM.render(<Pic /> , document.querySelector("#pic"));
-ReactDOM.render(<Title />, document.querySelector("#title"));
-ReactDOM.render(<Form name = "Roberta" />, document.querySelector("#form"));
-
+<title>Safe App</title>
+<link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Leckerli One">
+<link rel="stylesheet" type="text/css"  href="style.css">
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js">
+    var input = 'const getMessage = () => "Hello World";';
+    var output = Babel.transform(input, { presets: ['es2015'] }).code;
 </script>
 
-<style>
-      *{padding: 0 ; margin: 0;  }
+<script type="text/babel">
 
-      #title{
+function name(user) {
+  if(user.age > 20)
+      return "old " + user.name ;
 }
 
+const user = {
+  name: 'Pierre',
+  age: 33
+};
 
-      #pic{
-        display: inline-block;
-        position: relative;
-        width: 130px;
-        height: 130px;
-
-      }
-
-      fieldset {
-        border-radius: 5px;
-        background: inherit;}
-
-      legend { color: #0080a8;
-              background: inherit;}
-
-      .banner { height: 140px;
-                width:  100%;
-                margin: 0 0 25px 0;
-                background: MediumPurple  ;
-                }
-      .banner h1 {
-                font-size: 48px;
-                background: inherit;
-
-                }
-
-
-      .boxPic { width: 15%;
-                height: 130px;
-                display: inline-block;
-                background: white;
-                border: 1px solid white;
-                margin: 4px auto auto auto ;
-                min-width: 130px;
-                background-color: inherit;
-                text-align: center;
-
-              }
-      .boxTitle{
-                width: 60%;
-                height: 130px;
-                display: inline-block;
-                border: 1px solid white;
-                margin: 4px auto auto auto;
-                vertical-align:top;
-                font-family:  'Leckerli One',serif;
-                color: white;
-                background: inherit;
-
-      }
-
-      .boxRight{
-                width: 20%;
-                height: 130px;
-                display: inline-block;
-                border: 1px solid white;
-                margin: 4px auto auto auto;
-                vertical-align:top;
-                background: inherit;
+const element = (
+<h1>
+  Hello, {name(user)}!
+</h1>
+);
 
 
 
-      }
-
-      .widget{
-        border: 1px solid MediumPurple;
-        width: 45%;
-        margin: 45px;
-        padding: 15px;
-      }
+  ReactDOM.render(
+      element,
+      document.getElementById('output')
+);
+</script>
 
 
-</style>
-</head>
+
 
 <body>
-
-
-<div class = banner>
-
-<div class = boxPic>
-      <div id = 'pic'></div>
-</div>
-
-<div class = boxTitle>
-      <div id = 'title'></div>
-</div>
-<div class = boxRight></div>
-</div>
-
-<div class= widget>
-<div id = "form"></div>
-</div>
-
-
+  <div id="output"> </div>
 </body>
+
+
 </html>
