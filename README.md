@@ -1,4 +1,12 @@
+V0.1 - dec 2017.
 
-React JS project to generate a customizable homePage  =>  http://carb11.eu/march31_2017_ReactIII/index.html
+#Features
+ - Quickly inform friends and colleagues that you are safe in case of large scale incident.
+Connect on the webapp and receive news from your friends and colleagues.
 
-![screenshot here: ](https://raw.github.com/Carburator11/ReactJS/master/ReactIII.jpg)
+ - Get or provide help if needed.
+
+ - Launch an alert if an incident occurs.
+
+#Tech
+ - Front : React
