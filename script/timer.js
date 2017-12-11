@@ -20,6 +20,6 @@ class Clock extends React.Component {
   componentWillUnmount() {clearInterval(timerID)}
 
   render() {
-    return (<span>  { this.state.date.toLocaleString() }  </span>);
+    return (<span className="clock">  { this.state.date.toLocaleString() }  </span>);
     }
 }
