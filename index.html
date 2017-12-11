@@ -48,7 +48,6 @@ class Body extends React.Component{
     super(props);
     this.state = {cat: props.initialCat};
     this.handleClick = this.handleClick.bind(this);
-
     }
 
   handleClick() {
@@ -61,43 +60,31 @@ class Body extends React.Component{
   render(){
     console.log(this.state.cat);
     if(!this.state.cat){
-    return(<div className="body"  onClick = {this.handleClick} >
+    return(<div className="body"   >
               <div className="bodyContent">
-                <Categories cat = {this.state.cat} />
-                <Status className = "status"/>
+                <div  className = "categories">
+                  <div className = "cat" >
+                    Status {!this.state.cat? '*':'' }
+                  </div>
+                  <div className = "cat" onClick = {this.handleClick}>
+                    Group  {!this.state.cat? '':'*' }
+                  </div>
+                </div>
               </div>
-            </div>)
+            <Status className = "status"/>
+          </div>)
     } else {
-    return(<div className="body" onClick = {this.handleClick}  >
+    return(<div className="body" >
               <div className="bodyContent">
-                <Categories cat = {this.state.cat} />
+                <div  className = "categories">
+                  <div className = "cat" onClick = {this.handleClick}>Status {this.state.cat? '':'*' } </div>
+                  <div className = "cat" >Group  {this.state.cat? '*':'' }</div>
+                </div>
                 <Userlist className ="userList"/>
               </div>
-            </div>)
+            </div>)}
       }
-    }
-
-
-
  }
-
-
-
-class Categories extends React.Component{
-    constructor(props){
-      super(props);
-    }
-
-    render(){
-      return( <div  className = "categories">
-                <div className = "cat" >Status { this.props.cat? '*':'' }</div>
-                <div className = "cat" >Group  { this.props.cat? '':'*' }</div>
-              </div>)
-      }
-}
-
-
-
 
 
 
