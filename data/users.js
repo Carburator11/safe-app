@@ -3,15 +3,15 @@
 // note : JSX escapes any malicious code
 const users = {
   id_1: {
-    name: 'Pierre',
-    age: 33,
-    img: "spider.jpg"
+    name: 'Carol',
+    age: 0.3,
+    img: "img/spider.jpg"
   },
 
   id_2: {
     name: 'Brendan Eich',
     age: 57,
-    img: "js.jpg"
+    img: "img/js.jpg"
   }
 }
 

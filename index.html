@@ -16,46 +16,126 @@
 
 <script type="text/babel">
 
+class Main extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { currentStatus: "none", initialCat: 0 };
+    }
+
+  render(){
+    return(<div className = "main">
+              <Head />
+              <Body initialCat = {this.state.initialCat} />
+           </div>)
+   }
+}
+
+// Title + Date
 function Head(){
   return(<div className = "head">
-    <h1>Safe app v0.1</h1>
-    <Clock />
+    <div className="title">
+        <div id="comment"> 	&#60; head &#62;</div>
+        <h1>Safe app v0.1</h1>
+        <Clock />  {/* Extern*/}
+    </div>
     </div>)
   }
 
-function Status(prop){
-  return(<div className="status" >
-    <h2>Status</h2>
-    <p>{prop.no}</p>
-    </div>)
-}
 
-function Userlist(){
-  return(<div className="userList">
-    <h2>Users</h2>
-    <Avatar name = {users['id_1'].name}  age =  "33"  img =  {users['id_1'].img}/>  {/*  user1.age */}
-    <Avatar name = {users['id_2'].name}  age =  {users['id_2'].age}  img =  {users['id_2'].img}/>
-    </div>)
+class Body extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.state = {cat: props.initialCat};
+    this.handleClick = this.handleClick.bind(this);
+
+    }
+
+  handleClick() {
+    this.setState(prevState => ({
+      cat: prevState.cat?0:1
+      }));
   }
 
-function Avatar(prop){
-    return (
-        <div className="avatar">
-          <p>Name :{prop.name}</p>
-          <p>Age : {prop.age}</p>
-          <img src = {prop.img} title = {prop.name} />
-        </div>
-        );
+
+  render(){
+    console.log(this.state.cat);
+    if(!this.state.cat){
+    return(<div className="body"  onClick = {this.handleClick} >
+              <div className="bodyContent">
+                <Categories cat = {this.state.cat} />
+                <Status className = "status"/>
+              </div>
+            </div>)
+    } else {
+    return(<div className="body" onClick = {this.handleClick}  >
+              <div className="bodyContent">
+                <Categories cat = {this.state.cat} />
+                <Userlist className ="userList"/>
+              </div>
+            </div>)
+      }
+    }
+
+
+
+ }
+
+
+
+class Categories extends React.Component{
+    constructor(props){
+      super(props);
+    }
+
+    render(){
+      return( <div  className = "categories">
+                <div className = "cat" >Status { this.props.cat? '*':'' }</div>
+                <div className = "cat" >Group  { this.props.cat? '':'*' }</div>
+              </div>)
+      }
 }
 
 
-ReactDOM.render(
-      (<div>
-        <Head />
-        <div className = "main">
-        <Status className = "status" no = {currentStatus.no}/>
-        <Userlist className ="userList"/>
-      </div></div>),  document.getElementById('root'))
+
+
+
+
+
+          function Status(prop){
+            return(<div className="status" >
+
+              <p>Alertes en cours : {prop.no}</p>
+              </div>)
+          }
+
+          function Userlist(){
+            return(<div className="userList">
+
+              <Avatar name= "Don Draper" age= "41" img= "img/dd.jpg"  />
+              <Avatar name = {users['id_1'].name}  age =  "33"  img =  {users['id_1'].img}/>  {/*  user1.age */}
+              <Avatar name = {users['id_2'].name}  age =  {users['id_2'].age}  img =  {users['id_2'].img}/>
+              </div>)
+            }
+
+          function Avatar(prop){
+              return (
+                  <div className="avatar">
+                    <p>Name : {prop.name}</p>
+                    <p>Age : {prop.age}</p>
+                    <div className="statusLight"></div>
+                    <img src = {prop.img} title = {prop.name} />
+                  </div>
+                  );
+          }
+
+
+
+
+
+
+
+ReactDOM.render(<Main />,  document.getElementById('root') );
 
 
 

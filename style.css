@@ -1,44 +1,77 @@
 
+/*  GLOBAL */
+      *{margin: 0; padding: 0;}
+
+      body{
+        background: black;
+        font-family: "Montserrat","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+        color: white;
+      }
+
+      #comment{ font-size: 12px;  color: #0060ac; font-weight: bold;}
+
+      .main{
+        margin: 0 ;
+        background: #333333;
+      }
+
+      html {padding :  0  20px;}
+
+
+/*  HEADER */
+    .head{
+    	color: white;
+      background: #191919;
+      width: 100%;
+      padding: 0 0 25px 0;
+    }
+
+    .title{
+      padding :  0  15px;
+      margin: 0;
+    }
 
 
 
+/* BODY  */
+.categories {text-align: center;}
+.cat{  width:  48%;
+      margin: auto;
+      display: inline-block;
+      border: 1px solid #0060ac}
 
+      .body {margin: 0;   padding: 0 0 15px 0;}
 
+      .bodyContent {
+        padding :  0 5px;
+      }
 
+      .status{margin: 0;   padding: 0 0 10px 0;}
 
+      .userlist{margin: 0; padding: 0 0 10px 0;}
 
-*{margin: 0; padding: 0;}
+      .avatar{position: relative;
+              height: 80px;
+              width: 70%;
+              margin: 10px 0 ;
+              border-top-left-radius: 40px;
+              border-bottom-left-radius: 40px;
+              padding-left: 90px;
+              background: #6d6d6d;}
 
-body{
-  background: #2b2b2b;
-  font-family: "Montserrat","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-}
+      .statusLight{
+        z-index: 99;
+        position: absolute;
+        top:58px; left: 58px;
+        height: 12px; width: 12px;
+        background: green;
+        border-radius: 50%;
+        box-shadow: 0.25px 0.25px 2px 1px rgba(0,255,0, 1);
+      }
 
-.head{
-  padding: 10px 20px;
-	color: #5aa4d2;
-  background: #2b2b2b;
-  position: fixed;
-  width: 100%;
-}
-
-.main{
-  margin: 10px 20px;
-  padding-top: 80px;
-  background: white;;
-}
-
-.status{}
-.userlist{}
-
-.avatar{position: relative;
-        height: 75px;
-      border: 1px solid blue;
-      padding-left: 80px}
-
-.avatar img{
-  position: absolute;
-  top: 0; left: 0;
-  height: 70px;
-
-  border-radius: 50%}
+      .avatar img{
+        position: absolute;
+        top: 5px; left: 5px;
+        height: 70px;
+        box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+        border-radius: 50%}
