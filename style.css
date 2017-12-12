@@ -4,12 +4,12 @@
 
     body{
       background: black;
-      font-family: "Montserrat","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+      font-family: Roboto,Helvetica,"Helvetica Neue", Arial,sans-serif;
       color: white;
     }
 
     #comment{ font-size: 12px;  color: #0060ac; font-weight: bold;}
-
+    #copyright {font-weight: normal;}
     .main{
       margin: 0 ;
       background: #333333;
@@ -32,16 +32,16 @@
     }
     .logo{
       position: fixed;
-      top: 20px;
-      right: 30px;
+      top: 30px;
+      right: 15px;
       z-index: 99;
       width: 70px;
       height: 70px;
     }
 
     .logo img{
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
 }
 
     .clock{
@@ -49,10 +49,10 @@
     }
 
 /* BODY  */
-.categories {text-align: left;}
+.categories {text-align: center;}
 .cat{ text-align: center;
       width:  35%;
-      margin: auto;
+      margin: 0 5%;
       height: 30px;
       line-height: 30px;
       display: inline-block;
@@ -68,14 +68,19 @@
 
       .userlist{margin: 0; padding: 0 0 10px 0;}
 
-      .avatar{position: relative;
-              height: 80px;
-              right: 0 ;
-              margin: 10px 0 ;
-              border-top-left-radius: 40px;
-              border-bottom-left-radius: 40px;
-              padding-left: 90px;
-              background: #6d6d6d;}
+      .avatar{
+        position: relative;
+        height: 80px;
+        right: 0 ;
+        margin: 10px 0 ;
+        font-size : 16px;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+        background: #6d6d6d;}
+
+      .avatarText{
+        padding: 5px 10px 5px 90px;
+      }
 
       .statusLight{
         z-index: 99;

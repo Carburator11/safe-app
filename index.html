@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Safe App</title>
-  <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Leckerli One">
+  <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" type="text/css"  href="style.css">
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -34,9 +34,9 @@ class Main extends React.Component{
 // Title + Date
 function Head(){
   return(<div className = "head">
-    <div className = "logo"><img src="img/logo.png" /></div>
+    <div className = "logo"><img src="img/logo2.png" /></div>
     <div className="title">
-        <div id="comment"> Build 0.1 - dec2017 - &#9400;carb11</div>
+        <div id="comment"> Build 0.1 - dec2017 - <span id="copyright">&#9400;</span>carb11</div>
         <h1>Safe app</h1>
         <Clock />  {/* Extern*/}
     </div>
@@ -75,8 +75,8 @@ class Body extends React.Component{
     return(<div className="body" >
               <div className="bodyContent">
                 <div  className = "categories">
-                  <div className = "cat" onClick = {this.handleClick}>Status {this.state.cat? '':'*' } </div>
-                  <div className = "cat"  style= {activeCat}>Group  {this.state.cat? '*':'' }</div>
+                  <div className = "cat" onClick = {this.handleClick}>Status</div>
+                  <div className = "cat"  style= {activeCat}>Group</div>
                 </div>
                 <Userlist className ="userList"/>
               </div>
@@ -105,8 +105,9 @@ class Body extends React.Component{
           function Avatar(prop){
               return (
                   <div className="avatar">
+                    <div className="avatarText">
                     <p>Name : {prop.name}</p>
-                    <p>Localisation : {prop.loc}</p>
+                    <p>Localisation : {prop.loc}</p></div>
                     <div className="statusLight"></div>
                     <img src = {prop.img} title = {prop.name} />
                   </div>
