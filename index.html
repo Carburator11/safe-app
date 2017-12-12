@@ -95,14 +95,17 @@ class Body extends React.Component{
           }
  }
 
-
+    // Incidents
     function Incident(prop){
       return(<div className="incident" >
-
         <p>{prop.currentIncident}</p>
+        <button>Créer incident !</button>
         </div>)
     }
 
+
+
+    // Group
     function Userlist(){
       var list = [];
       for(var i = 0; i < users.length ; i++){
