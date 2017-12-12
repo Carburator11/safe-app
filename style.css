@@ -1,58 +1,53 @@
 
 /*  GLOBAL */
-    *{margin: 0; padding: 0;}
+*{margin: 0; padding: 0;}
 
-    body{
-      background: black;
-      font-family: Roboto,Helvetica,"Helvetica Neue", Arial,sans-serif;
-      color: white;
-    }
+body{
+  background: black;
+  font-family: Roboto,Helvetica,"Helvetica Neue", Arial,sans-serif;
+  color: white;
+}
 
-    #comment{ font-size: 12px;  color: #0060ac; font-weight: bold;}
-    #copyright {font-weight: normal;}
-    .main{
-      margin: 0 ;
-      background: #333333;
-    }
+#copyright{ font-size: 12px;  color: #0060ac; }
 
-    html {padding :  0  }
+.main{
+  width: 100% !important;
+  background: #333333;}
+
+
 
 
 /*  HEADER */
-    .head{
-    	color: white;
-      background: #191919;
-      width: 100%;
-      padding: 20px 0 20px 0;
-    }
-
-    .title{
-      padding :  0  15px;
-      margin: 0;
-    }
-    .logo{
-      position: absolute;
-      top: 30px;
-      right: 15px;
-      z-index: 99;
-      width: 70px;
-      height: 70px;
-    }
-
-    .logo img{
-      width: 70px;
-      height: 70px;
+.head{
+	color: white;
+  background: #191919;
+  width: 100%;
+  padding: 20px 0 20px 0;
 }
 
-    .clock{
-      font-size: 12px;
-    }
+.title{ padding :  0  15px;}
+
+.logo{
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  z-index: 99;
+  width: 70px;
+  height: 70px}
+
+.logo img{
+  width: 70px;
+  height: 70px}
+
+.clock{font-size: 12px;}
 
 /* BODY  */
-.categories {text-align: center;}
+.categories {
+      text-align: center;}
 .cat{ text-align: center;
-      width:  35%;
+      width: 35%;
       margin: 0 5%;
+      padding-bottom: 3px;
       height: 30px;
       line-height: 30px;
       display: inline-block;
@@ -65,26 +60,34 @@
       height: 3px;
       width: 0px;
       background: transparent;
-      transition: width .5s ease, background-color .5s ease;
+      transition: width .5s ease, background-color .5s ease}
+#active{color: #0060ac}
+#active:after{width: 100%;background: #0060ac;}
+.body {        padding: 10px 5px}
+.bodyContent { padding :  0  5px}
 
-}
-#active{
-      color: #0060ac;
-}
-#active:after{
-      width: 100%;
-    	background: #0060ac;}
 
-  .body {margin: 0;   padding: 10px 5px 10px 5px;}
+  /* Incident  */
+  .incident{
+        margin: 10px 0 ;
+        padding: 5px;
+        height: 10000px;
+        background: #6d6d6d;
+        position: relative;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        right: 0 ;}
 
-  .bodyContent {
-        padding :  0 5px;
-      }
+  .incidentLight{
+    z-index: 99;
+    height: 10px; width: 10px; margin-right: 5px;
+    background: green;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
-  .status{margin: 0;   padding: 20px;}
 
-  .userlist{margin: 0; padding: 0 0 10px 0;}
-
+  /* Group  */
   .avatar{
         position: relative;
         height: 80px;

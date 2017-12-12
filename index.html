@@ -22,13 +22,20 @@
 class Main extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { currentStatus: "none", initialCat: 1 };
+    this.state = {
+      currentIncident: {
+        no: "Pas d'incident en cours",
+        yes: "Incident en cours"},
+      initialCat: 0 };
     }
 
   render(){
     return(<div className = "main">
               <Head />
-              <Body initialCat = {this.state.initialCat} />
+              <Body
+                initialCat = {this.state.initialCat}
+                currentIncident = {this.state.currentIncident.no}
+              />
            </div>)
    }
 }
@@ -38,101 +45,99 @@ function Head(){
   return(<div className = "head">
     <div className = "logo"><img src="img/logo.png" /></div>
     <div className="title">
-        <div id="comment"> Build 0.1 - dec2017 - <span id="copyright">&#9400;</span>carb11</div>
+        <div id="copyright"> &#9400;Carb11. 2017 – v0.1</div>
         <h1>Safe app</h1>
         <Clock />  {/* Extern*/}
     </div>
     </div>)
   }
 
-
+// Render categories
 class Body extends React.Component{
-
   constructor(props) {
     super(props);
     this.state = {cat: props.initialCat};
-    this.handleClick = this.handleClick.bind(this);
-    }
+    this.state = {currentIncident : props.currentIncident};
+    this.handleClick = this.handleClick.
+    bind(this)}
 
   handleClick() {
     this.setState(prevState => ({
-      cat: prevState.cat?0:1
-      }));
-  }
-
+      cat: prevState.cat?0:1})
+    )}
 
   render(){
     console.log(this.state.cat);
     if(!this.state.cat){
-    return(<div className="body"   >
-              <div className="bodyContent">
-                <div  className = "categories">
-                  <div className = "cat" id="active" style= {activeCat}>  Status  </div>
-                  <div className = "cat" onClick = {this.handleClick}> Group  </div>
+        return(<div className="body"   >
+                  <div className="bodyContent">
+                    <div  className = "categories">
+                      <div className = "cat" id="active" >
+                          <div className="incidentLight"> </div>
+                          Incident</div>
+                      <div className = "cat" onClick = {this.handleClick}>Group</div>
+                    </div>
+                  <Incident className = "incident" currentIncident = {this.state.currentIncident}/>
                 </div>
-              <Status className = "status"/>
-            </div>
-          </div>)
-    } else {
-    return(<div className="body" >
-              <div className="bodyContent">
-                <div  className = "categories">
-                  <div className = "cat" onClick = {this.handleClick}>Status</div>
-                  <div className = "cat" id="active" style= {activeCat}>Group</div>
-                </div>
-                <Userlist className ="userList"/>
-              </div>
-            </div>)}
-      }
+              </div>)
+        } else {
+        return(<div className="body" >
+                  <div className="bodyContent">
+                    <div  className = "categories">
+                      <div className = "cat" onClick = {this.handleClick}>
+                      <div className="incidentLight"> </div>
+                      Incident</div>
+                      <div className = "cat" id="active" >Group</div>
+                    </div>
+                    <Userlist/>
+                  </div>
+                </div>)}
+          }
  }
 
 
+    function Incident(prop){
+      return(<div className="incident" >
 
+        <p>{prop.currentIncident}</p>
+        </div>)
+    }
 
-          function Status(prop){
-            return(<div className="status" >
+    function Userlist(){
+      var list = [];
+      for(var i = 0; i < users.length ; i++){
+        var avatletter = (users[i].name)[0].toUpperCase();
+        var color = colors[ (avatletter.charCodeAt(0) ) % colors.length ];
+        list.push(<Avatar
+                        key=   {users[i].id}
+                        name=  {users[i].name}
+                        loc =  {users[i].loc}
+                        img =  {users[i].img}
+                        letter = {avatletter}
+                        color = {color}
+                        status = "OK"
+                  />)
+      }
+      return(list)}
 
-              <p>Alertes en cours : {prop.no}</p>
-              </div>)
-          }
-
-          function Userlist(){
-            var list = [];
-            for(var i = 0; i < users.length ; i++){
-              var avatletter = (users[i].name)[0].toUpperCase();
-              var color = colors[ (avatletter.charCodeAt(0) ) % colors.length ];
-              list.push(<Avatar
-                              key=   {users[i].id}
-                              name=  {users[i].name}
-                              loc =  {users[i].loc}
-                              img =  {users[i].img}
-                              letter = {avatletter}
-                              color = {color}
-                              status = "OK"
-                        />)
-            }
-            return(list)
-            }
-
-          function Avatar(prop){
-
-              return (
-                  <div className="avatar">
-                    <div className="avatarText">
-                    <p>Name : {prop.name}</p>
-                    <p>Localisation : {prop.loc}</p>
-                    <p>Status : {prop.status}</p>
-                    </div>
-                    <div className="statusLight"></div>
-                    <div style = {{   background: "url(" + prop.img + ")",
-                                       zIndex: 39,
-                                       backgroundSize: 'cover',
-                                       backgroundPosition: 'center center',
-                                  }} className="avatarimg"></div>
-                    <div style = {{background: prop.color }} className="avatarimg">{prop.letter}</div>
-                  </div>
-                  );
-          }
+      function Avatar(prop){
+          return (
+              <div className="avatar">
+                <div className="avatarText">
+                <p>Name : {prop.name}</p>
+                <p>Localisation : {prop.loc}</p>
+                <p>Status : {prop.status}</p>
+                </div>
+                <div className="statusLight"></div>
+                <div style = {{   background: "url(" + prop.img + ")",
+                                   zIndex: 39,
+                                   backgroundSize: 'cover',
+                                   backgroundPosition: 'center center',
+                              }} className="avatarimg"></div>
+                <div style = {{background: prop.color }} className="avatarimg">{prop.letter}</div>
+              </div>
+              );
+      }
 
 
 ReactDOM.render(<Main />,  document.getElementById('root') );
