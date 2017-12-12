@@ -11,8 +11,10 @@
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.min.js">  </script>
   <script src = 'data/users.js' type="text/javascript"></script>
+  <script src = 'data/colors.js' type="text/javascript"></script>
   <script src = 'style/style.js' type="text/javascript"></script>
   <script src = 'script/timer.js' type="text/babel"></script>
+  <script src = 'script/accent.js' type="text/javascript"></script>
 </head>
 
 <script type="text/babel">
@@ -20,7 +22,7 @@
 class Main extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { currentStatus: "none", initialCat: 0 };
+    this.state = { currentStatus: "none", initialCat: 1 };
     }
 
   render(){
@@ -34,7 +36,7 @@ class Main extends React.Component{
 // Title + Date
 function Head(){
   return(<div className = "head">
-    <div className = "logo"><img src="img/logo2.png" /></div>
+    <div className = "logo"><img src="img/logo.png" /></div>
     <div className="title">
         <div id="comment"> Build 0.1 - dec2017 - <span id="copyright">&#9400;</span>carb11</div>
         <h1>Safe app</h1>
@@ -65,7 +67,7 @@ class Body extends React.Component{
     return(<div className="body"   >
               <div className="bodyContent">
                 <div  className = "categories">
-                  <div className = "cat"  style= {activeCat}>  Status  </div>
+                  <div className = "cat" id="active" style= {activeCat}>  Status  </div>
                   <div className = "cat" onClick = {this.handleClick}> Group  </div>
                 </div>
               <Status className = "status"/>
@@ -76,7 +78,7 @@ class Body extends React.Component{
               <div className="bodyContent">
                 <div  className = "categories">
                   <div className = "cat" onClick = {this.handleClick}>Status</div>
-                  <div className = "cat"  style= {activeCat}>Group</div>
+                  <div className = "cat" id="active" style= {activeCat}>Group</div>
                 </div>
                 <Userlist className ="userList"/>
               </div>
@@ -97,27 +99,40 @@ class Body extends React.Component{
           function Userlist(){
             var list = [];
             for(var i = 0; i < users.length ; i++){
-              list.push(<Avatar key={users[i].id} name= {users[i].name} loc = {users[i].loc} img= {users[i].img}  />)
+              var avatletter = (users[i].name)[0].toUpperCase();
+              var color = colors[ (avatletter.charCodeAt(0) ) % colors.length ];
+              list.push(<Avatar
+                              key=   {users[i].id}
+                              name=  {users[i].name}
+                              loc =  {users[i].loc}
+                              img =  {users[i].img}
+                              letter = {avatletter}
+                              color = {color}
+                              status = "OK"
+                        />)
             }
             return(list)
             }
 
           function Avatar(prop){
+
               return (
                   <div className="avatar">
                     <div className="avatarText">
                     <p>Name : {prop.name}</p>
-                    <p>Localisation : {prop.loc}</p></div>
+                    <p>Localisation : {prop.loc}</p>
+                    <p>Status : {prop.status}</p>
+                    </div>
                     <div className="statusLight"></div>
-                    <img src = {prop.img} title = {prop.name} />
+                    <div style = {{   background: "url(" + prop.img + ")",
+                                       zIndex: 39,
+                                       backgroundSize: 'cover',
+                                       backgroundPosition: 'center center',
+                                  }} className="avatarimg"></div>
+                    <div style = {{background: prop.color }} className="avatarimg">{prop.letter}</div>
                   </div>
                   );
           }
-
-
-
-
-
 
 
 ReactDOM.render(<Main />,  document.getElementById('root') );

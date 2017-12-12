@@ -31,7 +31,7 @@
       margin: 0;
     }
     .logo{
-      position: fixed;
+      position: absolute;
       top: 30px;
       right: 15px;
       z-index: 99;
@@ -56,19 +56,36 @@
       height: 30px;
       line-height: 30px;
       display: inline-block;
+      position: relative;
       }
+.cat:after{
+      content: '';
+      display: block;
+      margin: auto;
+      height: 3px;
+      width: 0px;
+      background: transparent;
+      transition: width .5s ease, background-color .5s ease;
 
-      .body {margin: 0;   padding: 0 0 15px 0;}
+}
+#active{
+      color: #0060ac;
+}
+#active:after{
+      width: 100%;
+    	background: #0060ac;}
 
-      .bodyContent {
+  .body {margin: 0;   padding: 10px 5px 10px 5px;}
+
+  .bodyContent {
         padding :  0 5px;
       }
 
-      .status{margin: 0;   padding: 20px;}
+  .status{margin: 0;   padding: 20px;}
 
-      .userlist{margin: 0; padding: 0 0 10px 0;}
+  .userlist{margin: 0; padding: 0 0 10px 0;}
 
-      .avatar{
+  .avatar{
         position: relative;
         height: 80px;
         right: 0 ;
@@ -78,7 +95,7 @@
         border-bottom-left-radius: 40px;
         background: #6d6d6d;}
 
-      .avatarText{
+  .avatarText{
         padding: 5px 10px 5px 90px;
       }
 
@@ -91,9 +108,13 @@
         border-radius: 50%;
       }
 
-      .avatar img{
+      .avatarimg{
         position: absolute;
-        top: 5px; left: 5px;
-        height: 70px;
+        top: 8px; left: 8px;
+        height: 64px; width: 64px;
+        text-align: center; line-height: 70px;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
         box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
         border-radius: 50%}
